@@ -1,5 +1,6 @@
 body{
     background-color:#f7f6f1;
+    padding-top: 55px; /* si ton header fait 60px de haut */
 }
 
 /*///////////////////////////////////////////////////////*/
@@ -11,6 +12,16 @@ header {
     height: 60px;
     align-items: center;            /* Centre les éléments verticalement */
     transition: height 0.3s ease;   /* gère l'effet zoome de 3px sur l'hover*/
+
+
+
+
+background-color:#f7f6f1;
+      position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
 }
 
 header:hover {
@@ -24,6 +35,7 @@ header:hover {
     align-items: center;        /* Centre les éléments verticalement */
     gap: 30px;                  /* Espace entre les menus */
     padding: 0 0 10px 20px;     /* Optionnel : ajoute un peu d’espace autour haut droite bas gauche*/
+    
 }
 
 /*Mise en forme des titres du menu*/
@@ -95,7 +107,7 @@ header:hover {
 /*///////////////////////////////////////////////////////*/
 
 @media screen and (max-width: 525px){
-/* Affiche le bouton burger */
+    /* Affiche le bouton burger */
     #burger {
         display: flex;               /*Rend l’élément visible et lui permet de s’afficher comme un bloc */
         font-size: 2em;              /*Agrandit la taille du symbole burger (≡) à 2 fois la taille de la police par défaut.*/
@@ -184,4 +196,10 @@ header:hover {
 
     
 
+}
+
+.prout{
+    width: 100%;
+    height: 6000px;
+    background-color: blue;
 }
