@@ -23,7 +23,7 @@ header:hover {
     display: flex;              /* Active le mode flex */
     align-items: center;        /* Centre les éléments verticalement */
     gap: 30px;                  /* Espace entre les menus */
-    padding: 0 0 10px 20px;              /* Optionnel : ajoute un peu d’espace autour haut droite bas gauche*/
+    padding: 0 0 10px 20px;     /* Optionnel : ajoute un peu d’espace autour haut droite bas gauche*/
 }
 
 /*Mise en forme des titres du menu*/
@@ -86,3 +86,71 @@ header:hover {
     text-decoration: none;          /* empêche de souligner les titres des sous menus*/
     padding: 5px 10px;              /* décalage interne vertical et horizontal*/
 }   
+
+#burger {
+  display: none;
+}
+/*///////////////////////////////////////////////////////*/
+/* Responsive breakpoint en dessous de 525px*/
+/*///////////////////////////////////////////////////////*/
+
+@media screen and (max-width: 525px){
+/* Affiche le bouton burger */
+    #burger {
+        display: flex;                    /*Rend l’élément visible et lui permet de s’afficher comme un bloc */
+        font-size: 2em;                   /*Agrandit la taille du symbole burger (≡) à 2 fois la taille de la police par défaut.*/
+        background: none;                 
+        border: none;
+        color: #6685b2;
+        cursor: pointer;
+        position: absolute;               /*Permet de placer précisément le bouton dans le header, indépendamment du flux normal.*/
+        top: 10px;                        /*Décale le bouton de 10 pixels depuis le haut du parent (header).*/
+        right: 20px;
+        z-index: 2000;
+    }
+
+    /*Cache le bandeau sur mobile*/
+    #bandeau{
+        display: none;                              /*cache le bandeau et empêche les animations éventuelles */
+        flex-direction: column;                     /*place les titre du menu en colonne*/
+        align-items: stretch;
+        background-color: #fff;
+        position: absolute;
+        top: 60px;                                  /*Décale le menu de 60 pixels vers le bas, juste sous le header (qui fait 60px de haut*/
+        left: 0;                                    /*Aligne le menu à gauche de la page.*/
+        width: 100%;                                /*Le menu prend toute la largeur de l’écran.*/
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);    /*Ajoute une ombre douce sous le menu pour le faire ressortir visuellement.*/
+        z-index: 1000;                              /*Place le menu au-dessus des autres éléments de la page.*/
+        padding: 20px;                              /* Ajoute de l’espace intérieur tout autour du menu.*/
+    }
+
+    /*Affiche le bandeau au clic sur le burger i.e. quand le bandeau à la classe active (via javascript)*/
+    #bandeau.active {
+    display: flex;
+
+    }
+    /* Sous-menus deviennent statiques sur mobile */
+    #bandeau .menu.toggleable .submenu{
+        position: static;                   /* Le sous-menu devient statique, c’est-à-dire qu’il suit le flux normal du document.*/
+        visibility: visible;                /*On évite les effets de survol (hover) qui ne fonctionnent pas bien sur écran tactile.*/
+        transform: none;                    /*Le sous-menu s’affiche directement, sans animation.*/
+        box-shadow: none;                   /*Sur mobile, on simplifie le design pour plus de clarté et de lisibilité.*/
+        padding-left: 10px;                 /*Ajoute un petit décalage à gauche pour que les sous-menus soient légèrement indentés.*/
+    }
+
+    /* Menus en colonne avec séparation */
+    #bandeau .menu {
+        padding: 10px 0;                    /*Décale un peu les menus par le haut*/
+        border-bottom: 1px solid #eee;    /* sépare physiquement les menus avec un trait*/
+    }
+    /* Ajustement des titres */
+    #bandeau .titre {
+        font-size: 18px;
+    }
+    /* Flèche plus grande pour le tactile */
+    #bandeau .arrow {
+        font-size: 1.2em;                   /* on grossit 1 poil la flèche*/
+        transform: rotate(-90deg);          /*retourner la flèche sachant que les sous-menus sont sur le côté*/
+    }
+
+}
