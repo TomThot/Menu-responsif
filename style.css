@@ -46,7 +46,7 @@ header:hover {
     color:  #6685b2;
 }
 
-/*gère les effet au passage de souris sur les titre*/
+/*gère les effet au passage de souris sur les titres*/
 #bandeau .menu:hover{
   transform: scale(1.05);
   filter: brightness(1.3);
@@ -66,7 +66,7 @@ header:hover {
     display: flex;                /* Active le mode flex */
     align-items: center;          /* Centre les éléments verticalement (flèche et titres)*/
     position: relative;           /* nécessaire pour positionner le sous-menu */
-     width: fit-content;          /* permet au menu de s'adapter à son contenu*/
+    width: fit-content;          /* permet au menu de s'adapter à son contenu*/
 }
 
 /* permet de gérer les effets sur les titres du menu*/
@@ -82,7 +82,7 @@ header:hover {
     width: 100%;                    /* permet au submenu de prendre la largeur du parent (menu toggleable)*/
     visibility: hidden;             /*cache le sous menu au départ*/
     transform: translateY(-10px);   /* le cache au dessus du menu pour un effet déroulant vers le bas ensuite*/
-    transition: all 0.3s ease;      /* on adoucit les transition */
+    transition: all 0.2s ease;      /* on adoucit les transitions */
     z-index: 1000;                  /*permet d'apparaitre au dessus des autres éléments*/
     padding-bottom: 5px;            /* permet de décoller le dernier titre du sous menu du bas du sous menu*/
 }
