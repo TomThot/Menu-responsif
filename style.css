@@ -1,10 +1,10 @@
 body{
     background-color:#f7f6f1;
-    padding-top: 55px; /* si ton header fait 60px de haut */
+    padding-top: 55px; /* Pour garder header visible au scroll si ton header fait 60px de haut */
 }
 
 /*///////////////////////////////////////////////////////*/
-/* Mise en forme du menu haut de page*/
+/* Mise en forme du header pour le menu haut de page*/
 /*///////////////////////////////////////////////////////*/
 header {
     display: flex;                  /* Active le mode flex */
@@ -12,21 +12,23 @@ header {
     height: 60px;
     align-items: center;            /* Centre les éléments verticalement */
     transition: height 0.3s ease;   /* gère l'effet zoome de 3px sur l'hover*/
-
-
-
-
-background-color:#f7f6f1;
-      position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  z-index: 1000;
+    background-color:#f7f6f1;     /*pour le scroll, permet de conserver le fond du header*/
+    position: fixed;                /* fixe le header en haut de la fenêtre*/
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;                  /* garde le header au dessus des éléments de la page*/
 }
 
 header:hover {
     background-color: white;
     height: 63px;
+}
+
+/*Mise en forme du logo à droite*/
+#logo img {
+    height: 50px;
+    margin: 5px 5px 0 10px;
 }
 
 /* #bandeau contient tous les menus*/
@@ -103,10 +105,14 @@ header:hover {
   display: none;
 }
 /*///////////////////////////////////////////////////////*/
+/* FIN de la mise en forme du header pour le menu haut de page*/
+/*///////////////////////////////////////////////////////*/
+
+/*///////////////////////////////////////////////////////*/
 /* Responsive breakpoint en dessous de 525px*/
 /*///////////////////////////////////////////////////////*/
 
-@media screen and (max-width: 525px){
+@media screen and (max-width: 600px){
     /* Affiche le bouton burger */
     #burger {
         display: flex;               /*Rend l’élément visible et lui permet de s’afficher comme un bloc */
@@ -198,8 +204,57 @@ header:hover {
 
 }
 
+/*///////////////////////////////////////////////////////*/
+/* FIN du Responsive breakpoint en dessous de 525px*/
+/*///////////////////////////////////////////////////////*/
+
+
+/*///////////////////////////////////////////////////////*/
+/* Mise en forme du bloc main*/
+/*///////////////////////////////////////////////////////*/
+
+main {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 40px 20px;
+    font-family: 'Segoe UI', sans-serif;
+    color: #333;
+}
+
+section {
+    margin-bottom: 60px;
+}
+
+h1, h2 {
+    color: #222;
+    margin-bottom: 10px;
+}
+
+p, ul {
+    line-height: 1.6;
+}
+
+ul {
+    padding-left: 20px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 .prout{
     width: 100%;
     height: 6000px;
-    background-color: blue;
+    background-color: rgb(197, 197, 252);
 }
