@@ -214,47 +214,136 @@ header:hover {
 /*///////////////////////////////////////////////////////*/
 
 main {
-    max-width: 1000px;
-    margin: 0 auto;
-    padding: 40px 20px;
+    max-width: 1000px;              /*Espace de la colonne centrale pour plus de visibilité*/
+    margin: 0 auto;                 /*centre horizontalement dans son conteneur.*/
+    padding: 40px 20px;             /*marge interne de 40 en haut et bas et 20 sur les cotés*/
     font-family: 'Segoe UI', sans-serif;
     color: #333;
 }
 
+/*les différentes sections du documents*/
 section {
-    margin-bottom: 60px;
+    margin-bottom: 60px; /*chaque section écarte la suivante de 60px vers le bas*/
 }
 
+/*les différents titres du documents*/
 h1, h2 {
     color: #222;
     margin-bottom: 10px;
 }
 
 p, ul {
-    line-height: 1.6;
+    line-height: 1.6;                /*espace entre les lignes pour plus de lisibilté*/
 }
 
+/*gestion des puces des listes*/
 ul {
-    padding-left: 20px;
+    padding-left: 20px;             /*décalage des items de 20px / bords gache du cadre*/
 }
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-.prout{
-    width: 100%;
-    height: 6000px;
-    background-color: rgb(197, 197, 252);
+/* Ensemble titre clignotant et cadre des dates*/
+.TitreEtDates {
+  display: flex;
+  flex-direction: column;           /* empile les éléments */
+  gap: 1rem;
 }
+
+/*Titre clignotant*/
+.encap {
+  display: flex;                            /*Active Flexbox pour aligner les éléments .word1 et .word2*/
+  flex: 1;                                  /*Active Flexbox pour aligner les éléments .word1 et .word2*/
+  justify-content: left;                    /*Aligne les éléments à gauche dans le conteneur. (flex-start est équivalent)*/
+  align-items: center;                      /*Aligne les éléments verticalement au centre du conteneur.*/
+  height: 3rem;                             /*Définit une hauteur fixe de 3 rem (≈48px si 1rem = 16px).*/
+  font-family: 'Roboto', sans-serif;
+  font-weight: 300;                         /*Texte en gras léger (300 = light).*/
+  font-size: clamp(1.2rem, 2.5vw, 1.6rem);  /* s’adapte entre 1rem et 2rem */
+  color: #2081ff;
+  overflow: hidden;                         /*Cache tout ce qui dépasse du conteneur .encap (utile si animation ou texte trop long)*/
+  position: relative;                       /*Prépare le conteneur à recevoir des éléments positionnés en absolu à l’intérieur (même si ce n’est pas utilisé ici)*/
+  margin-top: 1rem;
+  margin-left: 10px;
+  gap: 1vw;                                 /* Ajoute un espacement horizontal entre .word1 et .word2, proportionnel à la largeur de l’écran */
+}
+
+.word2 span {
+  display: inline-block;                    /*Permet d’appliquer des animations et des dimensions au texte*/
+  opacity: 0;                               /*Le texte est invisible au départ*/
+  animation: fadeLoop 5s ease-in-out infinite; /* Lance l’animation fadeLoop avec effet doux (ease-in-out)*/
+}
+
+@keyframes fadeLoop {
+  0% {
+    opacity: 0;                             /*De 0% à 30% : le texte apparaît*/
+  }
+  30% {
+    opacity: 1;
+  }                                         /*De 30% à 70% : le texte reste visible*/
+  70% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;                             /*De 70% à 100% : le texte disparaît*/
+  }
+}
+
+
+.dateDNB {
+  position: relative;                                   /*Permet de positionner des éléments enfants en absolute si besoin. Ici, ça prépare le terrain.*/
+  max-width: 100%;                                      /*Le bloc ne dépassera jamais la largeur de son conteneur. Il est fluide et responsive.*/
+  box-sizing: border-box;                               /*Inclut les padding et bordures dans le calcul de la largeur/hauteur. Très utile pour éviter les débordements.*/
+  display: inline-block;                                /*Le bloc se comporte comme un élément en ligne, mais accepte les dimensions (width, height, etc.).*/
+  margin-top: 0.5rem;
+  margin-left: 7px;
+  padding: 15px;
+  font-family: Arial, sans-serif;                       /*Utilise une police classique et lisible.*/
+  border: 3px solid transparent;                        /*Crée une bordure invisible mais avec une épaisseur de 3px. Elle sert de base pour le dégradé animé.*/
+  border-radius: 10px;                                  /*Arrondit les coins du cadre pour un effet plus doux et moderne.*/
+  background:
+    linear-gradient(#fff, #fff) padding-box,        /*1er fond intérieur blanc*/
+    linear-gradient(45deg, #ff6ec4, #7873f5, #4ade80, #facc15) border-box; /*2nd fond dégradé sur bordure */
+  background-size: 300% 300%;                           /*Agrandit le fond pour permettre une animation fluide du dégradé.*/
+  background-origin: border-box;                        /* Le fond s’applique à partir de la bordure, pas du contenu.*/
+  animation: rotateBorder 3s linear infinite;           /*Lance l’animation de 3s à vitesse constante (linear) à l'infini*/
+  box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);         /*Ajoute une ombre douce pour donner du relief au cadre.*/
+  z-index: 1;                                           /*Place le cadre au-dessus des éléments de même niveau si besoin.*/
+}
+
+/* Animation du dégradé */
+@keyframes rotateBorder {
+  0% {
+    background-position: 0% 50%;                        /*Départ à gauche*/
+  }
+  50% {
+    background-position: 100% 50%;                      /*Milieu à droite*/
+  }
+  100% {
+    background-position: 0% 50%;                        /*Retour à gauche*/
+  }
+}
+
+/* Pour le texte interne (facultatif, juste du style) */
+#titreDates {
+  font-weight: bold;
+  font-size: 1.2rem;
+  margin-bottom: 8px;
+  text-decoration: underline;
+}
+
+#dates {
+  margin: 0;
+  padding-left: 20px;
+}
+
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;             /*transforme l’image en bloc (par défaut, une image est inline)*/
+    margin: 0 auto;             /*centre horizontalement dans son conteneur.*/
+}
+
+
+
